@@ -11,7 +11,18 @@ range(7, 6); // []
 ***********************************************************************/
 
 
-// your code here
+let range = (s, e) => {
+
+  if(e <= s) {
+    return [];
+  } else {
+    return [s, ...range(s + 1, e)]
+  }
+};
+/* 
+console.log(range(1, 5)); // [1, 2, 3, 4]
+console.log(range(3, 4)); // [3]
+console.log(range(7, 6)); // [] */
 
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
