@@ -18,8 +18,36 @@ fibonacci(3); // 2
 fibonacci(4); // 3
 fibonacci(10); // 55
 ***********************************************************************/
+let fibonacci = (n) => {
+  
+  if(n <= 0) {  
+  return 0;  
+  }
+  if(n === 1) {  
+  return 1;  
+  }
 
-// your code here
+  return fibonacci(n - 1) + fibonacci(n - 2);
+
+  };  
+
+/* 
+  const fibonacci = n => {
+    const fib = [0, 1];
+    for(let i = 2; i <= n; i++) {
+      fib[i] = fib[i - 2] + fib[i - 1]
+    }
+    return fib[n]
+  } */
+ 
+
+/* console.log(fibonacci(1)); // 1
+console.log(fibonacci(2)); // 1
+console.log(fibonacci(3)); // 2
+console.log(fibonacci(4)); // 3
+console.log(fibonacci(10)); // 55 */
+  
+// console.log(1 - 2);
   
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
