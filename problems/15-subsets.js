@@ -14,7 +14,43 @@ Hint: For subsets([1, 2, 3]), there are two kinds of subsets:
      subset that is the same, except it also does contain 3.
 ***********************************************************************/
 
-// your code here
+/* const subsets = (arr) => {
+  if(arr.length === 0) {
+    return [[]];
+  }
+let allSubs = [];
+let rest = subsets(arr.slice(1));
+
+rest.forEach(el => {
+  const elCopy = [...el];
+  elCopy.unshift(arr[0]);
+  allSubs.push(el);
+  allSubs.push(elCopy);  
+});
+
+return allSubs;
+
+
+};
+
+console.log(subsets([])); // [[]]
+console.log(subsets([1])); // [[], [1]]
+console.log(subsets([1, 2])); // [[], [1], [2], [1, 2]]
+console.log(subsets([1, 2, 3])); // [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]] */
+let arr =[3];
+let allSubs = [];
+let rest = [[], [ 2 ], [ 1 ], [ 2, 1 ] ]
+
+rest.forEach(el => {
+  const elCopy = [...el];
+  elCopy.unshift(arr[0]);
+  allSubs.push(el);
+  allSubs.push(elCopy);  
+});
+
+
+console.log(allSubs);
+
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
