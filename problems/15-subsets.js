@@ -1,5 +1,5 @@
 /***********************************************************************
-Write a function called `subsets` that will return all subsets of an array.
+Write a function called `subsets` that will return all subsets of an numsay.
 
 Examples: 
 
@@ -14,16 +14,16 @@ Hint: For subsets([1, 2, 3]), there are two kinds of subsets:
      subset that is the same, except it also does contain 3.
 ***********************************************************************/
 
-/* const subsets = (arr) => {
-  if(arr.length === 0) {
+/* const subsets = (nums) => {
+  if(nums.length === 0) {
     return [[]];
   }
 let allSubs = [];
-let rest = subsets(arr.slice(1));
+let rest = subsets(nums.slice(1));
 
 rest.forEach(el => {
   const elCopy = [...el];
-  elCopy.unshift(arr[0]);
+  elCopy.unshift(nums[0]);
   allSubs.push(el);
   allSubs.push(elCopy);  
 });
@@ -37,19 +37,51 @@ console.log(subsets([])); // [[]]
 console.log(subsets([1])); // [[], [1]]
 console.log(subsets([1, 2])); // [[], [1], [2], [1, 2]]
 console.log(subsets([1, 2, 3])); // [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]] */
-let arr =[3];
-let allSubs = [];
-let rest = [[], [ 2 ], [ 1 ], [ 2, 1 ] ]
 
-rest.forEach(el => {
-  const elCopy = [...el];
-  elCopy.unshift(arr[0]);
-  allSubs.push(el);
-  allSubs.push(elCopy);  
-});
+  const subsets = (nums) => {
+    let results = [[]];
 
+    function maker(index, current) {
+      for (let i = index; i < nums.length; i++){
+        current.push(nums[i]);
+        results.push([...current]);
+        maker(i + 1, current);
+        //backtrack
+        current.pop()
+      }
+    }
+    maker(0,[] );
+    return results;
+  
+  };
 
-console.log(allSubs);
+/*   var subsets = function(nums) {
+    // global result
+    const results = [];
+    // dfs recursive helper
+    const dfs = (i, nums, current) => {
+    // base case
+    if(i === nums. length) {
+    results.push(current.slice());
+    return;
+    }
+    // dfs recursive case
+    // exclude
+    dfs(i + 1, nums, current);
+    // include
+    current.push(nums[i]);
+    dfs(i + 1, nums, current);
+    current.pop();
+    }
+    dfs(0, nums, []);
+    return results;
+  }
+ */
+/*   console.log(subsets([])); // [[]]
+  console.log(subsets([1])); // [[], [1]]
+  console.log(subsets([1, 2])); // [[], [1], [2], [1, 2]] */
+  // console.log(subsets([1, 2, 3])); // [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]] */
+
 
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/

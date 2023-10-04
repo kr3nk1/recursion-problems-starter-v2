@@ -64,8 +64,48 @@ The call above should return the tree below:
 ***********************************************************************/
 
 const makeTree = (categories, parent) => {
-  // your code here
+  let result = {};
+  categories.filter(c => c.parent === parent)
+  .forEach(p => { result[p.id] = makeTree(categories, p.id)
+    
+  });
+  return result;
+  
+ /*    const tree = {};
+  
+    for (const category of categories) {
+      if (category.parent === parent) {
+        tree[category.id] = makeTree(categories, category.id);
+      }
+    }
+  
+    return tree; */
+  
 };
+
+const categories1 = [
+  { id: 'animals', 'parent': null },
+  { id: 'mammals', 'parent': 'animals' }
+];
+
+const tree1 = JSON.stringify(makeTree(categories1, null), 2, null);
+
+const categories2 = [
+  { id: 'animals', 'parent': null },
+  { id: 'mammals', 'parent': 'animals' },
+  { id: 'cats', 'parent': 'mammals' },
+  { id: 'dogs', 'parent': 'mammals' },
+  { id: 'chihuahua', 'parent': 'dogs' },
+  { id: 'labrador', 'parent': 'dogs' },
+  { id: 'persian', 'parent': 'cats' },
+  { id: 'siamese', 'parent': 'cats' }
+];
+
+const tree2 = JSON.stringify(makeTree(categories2, null), 2, null);
+
+
+console.log(tree1);
+console.log(tree2);
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
