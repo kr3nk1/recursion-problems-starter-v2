@@ -12,7 +12,34 @@ permutations([1, 2, 3]) // [[1, 2, 3], [1, 3, 2],
                         // [3, 1, 2], [3, 2, 1]]
 ***********************************************************************/
 
-// your code here
+function permutations(array) {
+  let result = [];
+
+//helper
+
+const dfs = (i, array ) => {
+  //base case
+  if(i === array.length) {
+    result.push(array.slice());
+    return;
+  }
+  //recursive case
+  for(let j=i; j < array.length; j++) {
+    [array[i], array[j]] = [array[j], array[i]];
+    dfs( i+1 , array);
+    [array[i], array[j]] = [array[j], array[i]];
+}
+}
+dfs(0, array);
+return result;
+
+};
+
+
+console.log(permutations([1, 2])) // [[1, 2], [2, 1]]
+console.log(permutations([1, 2, 3])) // [[1, 2, 3], [1, 3, 2],
+                        // [2, 1, 3], [2, 3, 1],
+                        // [3, 1, 2], [3, 2, 1]]
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
